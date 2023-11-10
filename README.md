@@ -1,5 +1,12 @@
 # Gaucho-Event-System
-Group Project for CS291A, Fall 2023. [Details](https://cs291.com/project/)
+Group Project for CS291A, Fall 2023. [Details](https://cs291.com/project/). And the team Members are:
+```
+Sahil Naik
+Rutvik Jha
+Kai Han
+Kedai Zuo
+Qiming Wu
+```
 
 ## Requirements:
 We are building an "Event Sharing Service" and the basic models are defined as follows:
