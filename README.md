@@ -17,4 +17,9 @@ Based on the models, we have the following user stories:
 * As an event host, I can proactively invite users to my event, so that I can help spread the word.
 
 ## Progress:
+Assignments:
+```
+Setup (2 people) + Frontend react (2 people) + Backend user stories (2 people) + Test (1 person) + Report (all in)
+```
+
 For week 1, we plan to assign 2 people to finish the environment setup and AWS deployment. After that, another 2 people will finish the backend user stories. The remaining members are learning react for later frontend developments.
