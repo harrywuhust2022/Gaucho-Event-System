@@ -1,12 +1,5 @@
 # Gaucho-Event-System
-Group Project for CS291A, Fall 2023. [Details](https://cs291.com/project/). And the team Members are:
-```
-Sahil Naik
-Rutvik Jha
-Kai Han
-Kedai Zuo
-Qiming Wu
-```
+Group Project for CS291A, Fall 2023. [Details](https://cs291.com/project/). And the team Members are Sahil Naik, Rutvik Jha, Kai Han, Kedai Zuo and Qiming Wu.
 
 ## Requirements:
 We are building an "Event Sharing Service" and the basic models are defined as follows:
@@ -24,4 +17,4 @@ Based on the models, we have the following user stories:
 * As an event host, I can proactively invite users to my event, so that I can help spread the word.
 
 ## Progress:
-`To be continued`
+For week 1, we plan to assign 2 people to finish the environment setup and AWS deployment. After that, another 2 people will finish the backend user stories. The remaining members are learning react for later frontend developments.
