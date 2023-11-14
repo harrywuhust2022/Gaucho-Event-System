@@ -1,0 +1,15 @@
+<%= form_with model: [ @user, @event, @comment ] do |form| %>
+  
+  <p>
+    <%= form.label :content %><br>
+    <%= form.text_area :content %>
+    <% @comment.errors.full_messages_for(:content).each do |message|%>
+        <div>
+            <%= message %>
+        </div>
+    <% end %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

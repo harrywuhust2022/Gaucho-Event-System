@@ -16,6 +16,10 @@ class EventsController < ApplicationController
   def show
     @user = User.find(params[:user_id])
     @event = @user.created_events.find(params[:id])
+    @comment = Comment.new
+
+
+
   end
   def destroy
     @user = User.find(params[:user_id])

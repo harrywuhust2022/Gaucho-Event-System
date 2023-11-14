@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   # root "posts#index"
   root "users#index"
   resources :users do
-    resources :events
+    resources :events do
+      resources :comments
+    end
   end
 
 end

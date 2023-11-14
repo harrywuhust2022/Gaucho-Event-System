@@ -6,3 +6,8 @@
 }%> <br>
 
 <%= link_to "back", @user%>
+
+<p>All comments:<%=@event.comments.size%></p>
+<%=render @event.comments%>
+<p>create a comment</p>
+<%=render "comments/form"%>
