@@ -1,0 +1,8 @@
+<h1><%= @event.title%></h1>
+<h2><%= @event.content%></h2>
+<%= link_to "destroy", user_event_path(@user, @event), data:{
+    turbo_method: :delete,
+    turbo_confirm: "Are you sure?"
+}%> <br>
+
+<%= link_to "back", @user%>
