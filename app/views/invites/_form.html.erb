@@ -1,0 +1,16 @@
+<%= form_with url: user_invites_path(@user,@invite), method: :post do |form| %>
+  <p>
+    <%= form.label :username %><br>
+    <%= text_field_tag :username %>
+  </p>
+
+  <%= hidden_field_tag :selected_event, @selected_event.id %>
+  
+  <% if @user_not_found %>
+    <div>
+      User not found
+    </div>
+  <% end %>
+
+  <%= form.submit "Submit" %>
+<% end %>

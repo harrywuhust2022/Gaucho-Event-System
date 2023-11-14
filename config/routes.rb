@@ -9,8 +9,14 @@ Rails.application.routes.draw do
   # root "posts#index"
   root "users#index"
   resources :users do
+    resources :invites
+    member do
+      get 'sent_invites', to: 'invites#sent_invites'
+      get 'received_invites', to: 'invites#received_invites'
+    end
     resources :events do
       resources :comments
+
     end
   end
 

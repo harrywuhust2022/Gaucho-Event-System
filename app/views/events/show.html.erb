@@ -11,3 +11,4 @@
 <%=render @event.comments%>
 <p>create a comment</p>
 <%=render "comments/form"%>
+<%=link_to "invite", new_user_invite_path(@user, selected_event:@event)%>

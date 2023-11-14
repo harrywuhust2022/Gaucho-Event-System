@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  status: 1
+  event: one
+  host: one
+  guest: one
+
+two:
+  status: 1
+  event: two
+  host: two
+  guest: two
