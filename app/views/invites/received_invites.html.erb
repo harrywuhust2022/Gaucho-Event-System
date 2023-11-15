@@ -6,6 +6,9 @@
         <li>Host: <%= invite.host.username%></li>
         <li>Guest: <%= invite.guest.username%></li>
         <li>Staus: <% if invite.status == 1%>Accepted<%elsif invite.status == 0%>Pending<%else%>Rejected<%end%></li>
+        <% if invite.status == 0%>
+            <%=render "responses/form", invite: invite%>
+        <%end%>
     </ul>
 <%end%>
 <%=link_to "back to user profile", @user%>

@@ -9,6 +9,7 @@ class InvitesController < ApplicationController
   def received_invites
     @user = User.find(params[:id])
     @invites = @user.received_invites
+    @response = Response.new
   end
   def new
     @user = User.find(params[:user_id])

@@ -45,6 +45,8 @@ receiver: UserId
 event: EventId
 result: boolean
 time: Time
+invite: InviteId
+message: string
 
 Routes
 User: all resources, such as /users, /users/:id

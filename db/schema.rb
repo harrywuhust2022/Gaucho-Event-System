@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_14_045609) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_15_030439) do
   create_table "comments", force: :cascade do |t|
     t.string "content"
     t.integer "user_id", null: false
@@ -45,6 +45,21 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_14_045609) do
     t.index ["host_id"], name: "index_invites_on_host_id"
   end
 
+  create_table "responses", force: :cascade do |t|
+    t.string "message"
+    t.boolean "result"
+    t.integer "responser_id", null: false
+    t.integer "event_id", null: false
+    t.integer "receiver_id", null: false
+    t.integer "invite_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_responses_on_event_id"
+    t.index ["invite_id"], name: "index_responses_on_invite_id"
+    t.index ["receiver_id"], name: "index_responses_on_receiver_id"
+    t.index ["responser_id"], name: "index_responses_on_responser_id"
+  end
+
   create_table "user_events", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "event_id", null: false
@@ -68,6 +83,10 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_14_045609) do
   add_foreign_key "invites", "events"
   add_foreign_key "invites", "users", column: "guest_id"
   add_foreign_key "invites", "users", column: "host_id"
+  add_foreign_key "responses", "events"
+  add_foreign_key "responses", "invites"
+  add_foreign_key "responses", "users", column: "receiver_id"
+  add_foreign_key "responses", "users", column: "responser_id"
   add_foreign_key "user_events", "events"
   add_foreign_key "user_events", "users"
 end

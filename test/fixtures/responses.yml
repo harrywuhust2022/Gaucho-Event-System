@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  message: MyString
+  result: false
+  responser: one
+  event: one
+  receiver: one
+  invite: one
+
+two:
+  message: MyString
+  result: false
+  responser: two
+  event: two
+  receiver: two
+  invite: two

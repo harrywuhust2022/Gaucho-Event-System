@@ -1,0 +1,14 @@
+<p>Please response</p>
+<%= form_with model: [@user, invite, @response] do |form|%>
+    <p>
+        <%= form.label :message%>
+        <%= form.text_area :message%>
+    </p>
+    <p>
+       <%= form.submit "Yes", name: 'response_value', value: 'yes', class: 'btn btn-success' %>
+       <%= form.submit "No", name: 'response_value', value: 'no', class: 'btn btn-danger' %>
+    </p>
+    <%= hidden_field_tag :selected_invite, invite.id %>
+
+
+<%end%>
