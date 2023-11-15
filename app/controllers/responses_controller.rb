@@ -29,6 +29,9 @@ class ResponsesController < ApplicationController
 
     if @response.save
       @invite.save
+      @event = @invite.event
+      user_event = UserEvent.new(user: @user, event: @event)
+      user_event.save
       redirect_to received_invites_user_path(@user)
     else
 

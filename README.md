@@ -1,79 +1,36 @@
 # README
-Models:
+Creator: Kedai Zuo
+Date: 11/14/2023
+
+* Models
 User
 Event
 Comment
 Invite
-RSVP
+Response
 
-Model variables:
-* User
-username: string
-email:string
-password:string
-event:EventId has_many
-comment:CommentId has_many
-invite:InviteId has_many
-rsvp: RsvpId has_many
+Model relationship details can be seen in models.
 
-* Event
-title: string
-content: string
-host: UserId
-member: UserId has_many
-comment: Comment has_many
-date: Time
-location: String
-category: String
-
-* Comment
-commenter: userId
-content: string
-Event: EventId
-time: Time
-
-* Invite
-host: UserId
-guest: UserId
-event: EventId
-status: int
-time: Time
-
-* RSVP
-responser: UserId
-receiver: UserId
-event: EventId
-result: boolean
-time: Time
-invite: InviteId
-message: string
-
-Routes
-User: all resources, such as /users, /users/:id
+* Database 
+Sqlite
 
 
+* Attention
+Before running, run rails db:migrate to generate tables.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Resources
+Almost all essential CRUD operations of every model are realized.
 
-Things you may want to cover:
+Route details can be seen in routes.rb.
 
-* Ruby version
 
-* System dependencies
+* Main Services 
+1. Create users
+2. User can create posts
+3. User can create comments on a specific event(because we don't have authentication, the commenter always is admin, who will be created automatically when a first comment is created)
+4. User can invite another user for a specific event
+5. User can response to invites and be added to that event
 
-* Configuration
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
 
 

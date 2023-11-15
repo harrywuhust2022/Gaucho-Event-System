@@ -1,10 +1,23 @@
 <p>Hi <%=@user.username%>, here are all your sent invites</p>
+<p><%=Invite.pending_invites_for_host(@user)%> pending sent invites</p>
 <%@invites.each do |invite|%>
     <ul>
         <li>Event: <%= invite.event.title%></li>
         <li>Host: <%= invite.host.username%></li>
         <li>Guest: <%= invite.guest.username%></li>
         <li>Staus: <% if invite.status == 1%>Accepted<%elsif invite.status == 0%>Pending<%else%>Rejected<%end%></li>
+        <% if invite.status != 0%>
+            <%if !invite.response.message.empty?%>
+                Response:<%=invite.response.message%>
+            <%end%>
+        
+        <%end%>
+        <li>
+            <%= link_to "destroy sent invite", user_invite_path(@user, invite), data:{
+                turbo_method: :delete,
+                turbo_confirm: "Are you sure?"
+            }%> <br>
+        </li>
     </ul>
 <%end%>
 <%=link_to "back to user profile", @user%>

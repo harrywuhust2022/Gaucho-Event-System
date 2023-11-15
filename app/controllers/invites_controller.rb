@@ -25,22 +25,41 @@ class InvitesController < ApplicationController
     @selected_event = @user.created_events.find(params[:selected_event])
 
     if @guest
-      @invite = @user.sent_invites.build
-
-      @invite.event = @selected_event
-      @invite.guest = @guest
-      @invite.status = 0
-
-
-      if @invite.save
-        redirect_to user_invites_path
-      else
+      if @selected_event.participants.include?(@guest)
+        @user_exists = true
         render :new, status: :unprocessable_entity
+      else
+
+        @invite = @user.sent_invites.build
+
+        @invite.event = @selected_event
+        @invite.guest = @guest
+        @invite.status = 0
+
+
+        if @invite.save
+          redirect_to user_invites_path
+        else
+          render :new, status: :unprocessable_entity
+        end
       end
     else
       @user_not_found = true
       render :new, status: :unprocessable_entity
     end
+  end
+  def destroy
+    @user = User.find(params[:user_id])
+    @invite = @user.sent_invites.find(params[:id])
+    @invite.destroy
+    redirect_to user_invites_path(@user), status: :see_other
+  end
+  def destroy_received_invite
+    @user = User.find(params[:user_id])
+    @invite = @user.received_invites.find(params[:id])
+    @invite.destroy
+    redirect_to received_invites_user_path(@user), status: :see_other
+
   end
   private
    def invite_params

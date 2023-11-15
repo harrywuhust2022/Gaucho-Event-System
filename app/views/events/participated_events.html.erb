@@ -1,0 +1,6 @@
+<p>You have <%=@events.size%> events participated.</p>
+<ul>
+    <%@events.each do |event|%>
+        <%=link_to event.title, user_event_path(event.creator, event)%>
+    <%end%>
+</ul>

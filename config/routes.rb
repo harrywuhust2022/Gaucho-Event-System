@@ -8,13 +8,20 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   root "users#index"
+
   resources :users do
     resources :invites do
       resources :responses
+      member do
+        delete :destroy_received_invite
+      end
     end
     member do
-      get 'sent_invites', to: 'invites#sent_invites'
+
       get 'received_invites', to: 'invites#received_invites'
+    end
+    member do
+      get 'participated_events', to: 'events#participated_events'
     end
     resources :events do
       resources :comments

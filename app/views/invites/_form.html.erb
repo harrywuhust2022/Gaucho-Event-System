@@ -11,6 +11,11 @@
       User not found
     </div>
   <% end %>
+  <% if @user_exists %>
+    <div>
+      User exists
+    </div>
+  <% end %>
 
   <%= form.submit "Submit" %>
 <% end %>

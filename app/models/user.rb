@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :sent_responses, class_name: 'Response', foreign_key: 'responser_id', dependent: :destroy
   has_many :received_responses, class_name: 'Response', foreign_key: 'receiver_id', dependent: :destroy
 
-  #need to be done
+
   has_many :user_events
   has_many :participating_events, through: :user_events, source: :event
 

@@ -3,6 +3,10 @@ class EventsController < ApplicationController
     @user = User.find(params[:user_id])
     @event = @user.created_events.build
   end
+  def participated_events
+    @user = User.find(params[:id])
+    @events = @user.participating_events
+  end
   def create
     @user = User.find(params[:user_id])
     @event = @user.created_events.build(event_params)

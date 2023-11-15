@@ -1,5 +1,6 @@
 <h1>received invites</h1>
 <p>Hi <%=@user.username%>, here are all your received invites</p>
+<p><%=Invite.pending_invites_for_guest(@user)%> pending received invites</p>
 <%@invites.each do |invite|%>
     <ul>
         <li>Event: <%= invite.event.title%></li>
@@ -8,7 +9,17 @@
         <li>Staus: <% if invite.status == 1%>Accepted<%elsif invite.status == 0%>Pending<%else%>Rejected<%end%></li>
         <% if invite.status == 0%>
             <%=render "responses/form", invite: invite%>
+        <% else%>
+            <%if !invite.response.message.empty?%>
+                Response:<%=invite.response.message%>
+            <%end%>
         <%end%>
+        <li>
+            <%= link_to "destroy received invite", destroy_received_invite_user_invite_path(@user, invite), data:{
+                turbo_method: :delete,
+                turbo_confirm: "Are you sure?"
+            }%> <br>
+        </li>
     </ul>
 <%end%>
 <%=link_to "back to user profile", @user%>
