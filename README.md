@@ -1,5 +1,7 @@
-# Gaucho-Event-System
+# Gaucho-Event-System (qwu-branch)
 Group Project for CS291A, Fall 2023. [Details](https://cs291.com/project/). And the team Members are Sahil Naik, Rutvik Jha, Kai Han, Kedai Zuo and Qiming Wu.
+
+This branch aims to create the authentification function of the current model.
 
 ## Requirements:
 We are building an "Event Sharing Service" and the basic models are defined as follows:
