@@ -13,7 +13,7 @@ id: <%= @user.id %>
     <ul>
         <% @users.each do |user| %>
             <li>
-                <%= user.name %>, <%= user.email %>, <%= user.id %><br>
+                Name: <%= user.name %>, Email: <%= user.email %>, UserID: <%= user.id %><br>
             </li>
         <% end %>
     </ul>

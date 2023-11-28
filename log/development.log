@@ -3712,3 +3712,18 @@ Processing by MainController#index as HTML
   Rendered shared/_navbar.html.erb (Duration: 11.4ms | Allocations: 252)
   Rendered shared/_flash.html.erb (Duration: 10.9ms | Allocations: 229)
   Rendered layout layouts/application.html.erb (Duration: 499.6ms | Allocations: 16378)
+Completed 200 OK in 689ms (Views: 529.4ms | ActiveRecord: 90.5ms | Allocations: 23551)
+
+
+Started GET "/main" for 127.0.0.1 at 2023-11-27 21:37:18 -0800
+Processing by MainController#index as HTML
+  [1m[36mUser Load (3.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering main/index.html.erb within layouts/application
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/main/index.html.erb:14
+  Rendered main/index.html.erb within layouts/application (Duration: 24.0ms | Allocations: 1471)
+  Rendered shared/_navbar.html.erb (Duration: 10.5ms | Allocations: 252)
+  Rendered shared/_flash.html.erb (Duration: 16.6ms | Allocations: 229)
+  Rendered layout layouts/application.html.erb (Duration: 549.3ms | Allocations: 16375)
