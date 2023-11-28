@@ -1,0 +1,11 @@
+<h1>Welcome to Gaucho Event System!</h1>
+
+<% if @user %>
+Logged in as: <%= @user.name %>,
+<%= @user.email %>, 
+id: <%= @user.id %>
+<%= button_to "Logout", logout_path, method: :delete %>
+<% end %>
+
+<div class="d-flex align-items-center justify-content-center">
+</div>
