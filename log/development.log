@@ -3660,3 +3660,55 @@ Processing by WelcomeController#index as HTML
 Completed 200 OK in 290ms (Views: 217.5ms | ActiveRecord: 0.0ms | Allocations: 2810)
 
 
+Started GET "/main" for 127.0.0.1 at 2023-11-27 21:29:10 -0800
+Processing by MainController#index as HTML
+  [1m[36mUser Load (35.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering main/index.html.erb within layouts/application
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/main/index.html.erb:15
+  Rendered main/index.html.erb within layouts/application (Duration: 54.0ms | Allocations: 4655)
+  Rendered layout layouts/application.html.erb (Duration: 58.2ms | Allocations: 4738)
+Completed 500 Internal Server Error in 283ms (ActiveRecord: 60.9ms | Allocations: 11443)
+
+
+  
+ActionView::Template::Error (undefined method `username' for #<User id: 2, name: "JamesA", email: "a@ucsb.edu", password_digest: [FILTERED], created_at: "2023-11-22 03:56:16.646050000 +0000", updated_at: "2023-11-22 03:56:16.646050000 +0000">):
+    14: <ul>
+    15:     <% @users.each do |user| %>
+    16:         <li>
+    17:             <%= user.username %>, <%= user.email %>, <%= user.password %><br>
+    18:         </li>
+    19:     <% end %>
+    20: </ul>
+  
+app/views/main/index.html.erb:17
+app/views/main/index.html.erb:15
+Started GET "/main" for 127.0.0.1 at 2023-11-27 21:31:16 -0800
+Processing by MainController#index as HTML
+  [1m[36mUser Load (3.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering main/index.html.erb within layouts/application
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/main/index.html.erb:15
+  Rendered main/index.html.erb within layouts/application (Duration: 18.2ms | Allocations: 1472)
+  Rendered shared/_navbar.html.erb (Duration: 9.4ms | Allocations: 252)
+  Rendered shared/_flash.html.erb (Duration: 14.4ms | Allocations: 229)
+  Rendered layout layouts/application.html.erb (Duration: 584.7ms | Allocations: 16535)
+Completed 200 OK in 772ms (Views: 615.0ms | ActiveRecord: 67.8ms | Allocations: 23763)
+
+
+Started GET "/main" for 127.0.0.1 at 2023-11-27 21:32:04 -0800
+Processing by MainController#index as HTML
+  [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering main/index.html.erb within layouts/application
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/main/index.html.erb:14
+  Rendered main/index.html.erb within layouts/application (Duration: 18.0ms | Allocations: 1471)
+  Rendered shared/_navbar.html.erb (Duration: 11.4ms | Allocations: 252)
+  Rendered shared/_flash.html.erb (Duration: 10.9ms | Allocations: 229)
+  Rendered layout layouts/application.html.erb (Duration: 499.6ms | Allocations: 16378)
