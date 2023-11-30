@@ -11791,3 +11791,12 @@ Processing by WelcomeController#index as TURBO_STREAM
 Completed 200 OK in 133ms (Views: 103.3ms | ActiveRecord: 0.0ms | Allocations: 2888)
 
 
+Started GET "/" for 127.0.0.1 at 2023-11-29 23:02:18 -0800
+  [1m[36mActiveRecord::SchemaMigration Load (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 9.3ms | Allocations: 483)
+  Rendered shared/_navbar.html.erb (Duration: 38.1ms | Allocations: 1584)
+  Rendered shared/_flash.html.erb (Duration: 10.7ms | Allocations: 277)
+  Rendered layout layouts/application.html.erb (Duration: 1368.2ms | Allocations: 39000)

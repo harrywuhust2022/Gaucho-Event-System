@@ -1,24 +1,9 @@
-# README
+# Introduction of Gaucho Event System
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+What I have completed so far:
+* We have a login / sign up / log out page;
+* All users with their events are shown in the main page;
+* All the authenticated users can CRUD (Create, Read, Update, Delete) their events.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+What's next?
+* Comment functions on the events.
