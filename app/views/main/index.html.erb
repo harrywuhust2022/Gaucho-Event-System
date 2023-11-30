@@ -1,20 +1,22 @@
 <h1>Welcome to Gaucho Event System!</h1>
 
-<% if @user %>
-Logged in as: <%= @user.name %>,
-<%= @user.email %>, 
-id: <%= @user.id %>
-<%= button_to "Logout", logout_path, method: :delete %>
-<% end %>
-
 <h2>Current Events</h2>
+
+<%= link_to 'New Event', new_event_path %> | 
+<%= link_to 'My Events', events_path %>
 
 <div class="d-flex align-items-center justify-content-center">
     <ul>
         <% @users.each do |user| %>
             <li>
-                Name: <%= user.name %>, Email: <%= user.email %>, UserID: <%= user.id %><br>
+                <b>Name</b>: <%= user.name %>, &nbsp <b>Email</b>: <%= user.email %>, &nbsp <b>UserID</b>: <%= user.id %><br>
+
+                <% user.events.each do |event| %>
+                    <p style="color: blue;"><b>Title</b>: <%= event.title %></p>
+                    <p style="color: blue;"><b>Contents</b>: <%= event.content %></p> <br>
+                <% end %>
             </li>
         <% end %>
+        
     </ul>
 </div>

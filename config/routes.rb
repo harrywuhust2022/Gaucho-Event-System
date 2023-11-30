@@ -13,4 +13,9 @@ Rails.application.routes.draw do
   
   get "main", to: "main#index"
 
+  resources :events
+  resources :users do
+    resources :events
+  end
+
 end

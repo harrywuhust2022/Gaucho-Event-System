@@ -1,0 +1,16 @@
+<h1>Your Events</h1>
+
+<% Current.user.events.each do |event| %>
+    <br>
+    <p><b>Event ID</b>: <%= event.id %></p>
+    <p><b>Title</b>: <%= event.title %></p>
+    <p><b>Contents</b>: <%= event.content %></p>
+
+    <%= link_to 'Edit', edit_event_path(event) %> <br>
+<% end %>
+
+<br>
+<%= link_to 'New Event', new_event_path %> | 
+<%= link_to 'Back to main page', main_path %>
+<br>
+<br>

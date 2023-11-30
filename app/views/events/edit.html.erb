@@ -1,0 +1,9 @@
+<h1>Edit Event</h1>
+
+<p><b>Event ID</b>: <%= @event.id %></p>
+<p><b>Title</b>: <%= @event.title %></p>
+<p><b>Contents</b>: <%= @event.content %></p>
+
+<%= render 'form', user: @user, event: @event %>
+<%= button_to 'Delete', @event, method: :delete %> &nbsp 
+<%= link_to 'Back', events_path %>

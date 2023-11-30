@@ -1,0 +1,16 @@
+<%= form_with(model: [@user, @event || @user.events.build]) do |form| %>
+    <div>
+        <%= form.label :title %> <br>
+        <%= form.text_field :title, required: true %>
+    </div>
+    
+    <div>
+        <%= form.label :content %> <br>
+        <%= form.text_area :content, required: true %>
+    </div>
+
+    <div>
+        <%= form.submit %>
+    </div>
+<% end %>
+<br>
