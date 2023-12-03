@@ -1,17 +1,23 @@
 <h1>Hi <%= @user.username %></h1>
 <h2>Email: <%= @user.email %></h2>
-<h2>Password: <%= @user.password %></h2>
-<%= link_to "edit", edit_user_path(@user)%><br>
+<% if current_user == @user%>
+    <%= link_to "edit", edit_user_path(@user)%><br>
+    <%= link_to "destroy", user_path(@user), data:{
+        turbo_method: :delete,
+        turbo_confirm: "Are you sure?"
+    }%><br>
+    <%= link_to "create a new event", new_user_event_path(@user)%><br>
+    <%=link_to "sent invites", user_invites_path(@user)%><br>
+    <%=link_to "received invites", received_invites_user_path(@user)%><br>
+<%end%>
+
 <%= link_to "back", users_path%><br>
-<%= link_to "destroy", user_path(@user), data:{
-    turbo_method: :delete,
-    turbo_confirm: "Are you sure?"
-}%>
+
+
 <p>All events created</p>
 <%= render @user.created_events%>
 <%=link_to "participated events", participated_events_user_path(@user)%><br>
-<%= link_to "create a new event", new_user_event_path(@user)%><br>
-<%=link_to "sent invites", user_invites_path(@user)%><br>
-<%=link_to "received invites", received_invites_user_path(@user)%>
+
+
 
 

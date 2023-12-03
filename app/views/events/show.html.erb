@@ -1,9 +1,13 @@
 <h1><%= @event.title%></h1>
 <h2><%= @event.content%></h2>
-<%= link_to "destroy", user_event_path(@user, @event), data:{
-    turbo_method: :delete,
-    turbo_confirm: "Are you sure?"
-}%> <br>
+<% if current_user == @user%>
+    <%= link_to "destroy", user_event_path(@user, @event), data:{
+        turbo_method: :delete,
+        turbo_confirm: "Are you sure?"
+    }%> <br>
+    <%=link_to "invite", new_user_invite_path(@user, selected_event:@event)%><br>
+<%end%>
+
 
 <%= link_to "back", @user%>
 
@@ -11,7 +15,7 @@
 <%=render @event.comments%>
 <p>create a comment</p>
 <%=render "comments/form"%>
-<%=link_to "invite", new_user_invite_path(@user, selected_event:@event)%>
+
 <p>You have <%=@event.participants.size%> members</p>
 <ul>
     <%@event.participants.each do |participant|%>
