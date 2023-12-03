@@ -11,10 +11,13 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.1].define(version: 2023_11_15_030439) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "comments", force: :cascade do |t|
     t.string "content"
-    t.integer "user_id", null: false
-    t.integer "event_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "event_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_comments_on_event_id"
@@ -29,15 +32,15 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_15_030439) do
     t.datetime "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
   create_table "invites", force: :cascade do |t|
     t.integer "status"
-    t.integer "event_id", null: false
-    t.integer "host_id", null: false
-    t.integer "guest_id", null: false
+    t.bigint "event_id", null: false
+    t.bigint "host_id", null: false
+    t.bigint "guest_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_invites_on_event_id"
@@ -48,10 +51,10 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_15_030439) do
   create_table "responses", force: :cascade do |t|
     t.string "message"
     t.boolean "result"
-    t.integer "responser_id", null: false
-    t.integer "event_id", null: false
-    t.integer "receiver_id", null: false
-    t.integer "invite_id", null: false
+    t.bigint "responser_id", null: false
+    t.bigint "event_id", null: false
+    t.bigint "receiver_id", null: false
+    t.bigint "invite_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_responses_on_event_id"
@@ -61,8 +64,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_15_030439) do
   end
 
   create_table "user_events", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "event_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "event_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_user_events_on_event_id"
