@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to @user
     else
-      render :new, status: unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
   def edit
@@ -38,6 +38,6 @@ class UsersController < ApplicationController
   end
   private
     def user_params
-      params.require(:user).permit(:username, :email, :password)
+      params.require(:user).permit(:username, :email, :password, :password_confirmation)
     end
 end

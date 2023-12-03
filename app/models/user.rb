@@ -10,10 +10,10 @@ class User < ApplicationRecord
   has_many :user_events
   has_many :participating_events, through: :user_events, source: :event
 
-
+  has_secure_password
 
   # Validations
   validates :username, presence: true
   validates :email, presence: true
-  validates :password, presence: true
+
 end
