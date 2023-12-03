@@ -1,0 +1,26 @@
+<%= form_with model: @user, url: '/login', method: :post do |form| %>
+  
+
+  <div>
+    <%= form.label :email %><br>
+    <%= form.text_field :email %>
+    
+  </div>
+
+  <div>
+    <%= form.label :password %><br>
+    <%= form.password_field :password %>
+    
+  </div>
+  <% if flash[:error].present? %>
+    <div class="alert alert-danger">
+        <%= flash[:error] %>
+    </div>
+  <% end %>
+  
+
+  <div>
+    <%= form.submit "Log in" %>
+  </div>
+  
+<% end %>
