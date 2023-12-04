@@ -10,7 +10,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  root "users#index"
+  # root "users#index"
+  root 'events#allEvents'
   get '/login', to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy', as: 'logout'
@@ -34,5 +35,6 @@ Rails.application.routes.draw do
 
     end
   end
+  get '*path', to: 'application#record_not_found'
 
 end

@@ -1,4 +1,5 @@
 class ResponsesController < ApplicationController
+  before_action :check_user_authorization, only:[:create]
   def create
     @user = User.find(params[:user_id])
     @invite = @user.received_invites.find(params[:selected_invite])
@@ -41,5 +42,11 @@ class ResponsesController < ApplicationController
   private
   def response_params
     params.require(:response).permit(:message)
+  end
+  def check_user_authorization
+    @user = User.find(params[:user_id])
+    unless current_user == @user
+      redirect_to root_path, alert: "You are not authorized to perform this action."
+    end
   end
 end

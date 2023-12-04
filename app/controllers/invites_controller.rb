@@ -1,5 +1,7 @@
 class InvitesController < ApplicationController
 
+  before_action :check_user_authorization, only: [:index,  :new, :create, :destroy, :destroy_received_invite]
+
   def index
     @user = User.find(params[:user_id])
     @invites = @user.sent_invites
@@ -8,6 +10,9 @@ class InvitesController < ApplicationController
   end
   def received_invites
     @user = User.find(params[:id])
+    unless current_user == @user
+      redirect_to root_path, alert: "You are not authorized to perform this action."
+    end
     @invites = @user.received_invites
     @response = Response.new
   end
@@ -62,7 +67,16 @@ class InvitesController < ApplicationController
 
   end
   private
-   def invite_params
-    params.require(:invite).permit(:event)
-   end
+    def invite_params
+      params.require(:invite).permit(:event)
+    end
+
+
+
+    def check_user_authorization
+      @user = User.find(params[:user_id])
+      unless current_user == @user
+        redirect_to root_path, alert: "You are not authorized to perform this action."
+      end
+    end
 end

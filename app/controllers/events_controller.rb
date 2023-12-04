@@ -1,4 +1,8 @@
 class EventsController < ApplicationController
+  before_action :check_user, only: [:new, :create, :destroy]
+  def allEvents
+    @events = Event.all
+  end
   def new
     @user = User.find(params[:user_id])
     @event = @user.created_events.build
@@ -34,5 +38,11 @@ class EventsController < ApplicationController
   private
     def event_params
       params.require(:event).permit(:title, :content)
+    end
+    def check_user
+      @user = User.find(params[:user_id])
+      unless current_user == @user
+        redirect_to root_path, alert: "You are not authorized to perform this action."
+      end
     end
 end

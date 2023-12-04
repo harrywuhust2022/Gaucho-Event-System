@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :check_user, only: [:edit, :update, :destroy]
   def index
     @users = User.all
   end
   def show
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
   end
   def new
     @user = User.new
@@ -17,11 +19,11 @@ class UsersController < ApplicationController
     end
   end
   def edit
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
 
     if @user.update(user_params)
       redirect_to @user
@@ -31,7 +33,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
     @user.destroy
 
     redirect_to users_path, status: :see_other
@@ -39,5 +41,14 @@ class UsersController < ApplicationController
   private
     def user_params
       params.require(:user).permit(:username, :email, :password, :password_confirmation)
+    end
+    def set_user
+      @user = User.find(params[:id])
+    end
+
+    def check_user
+      unless current_user == @user
+        redirect_to root_path, alert: "You are not authorized to perform this action."
+      end
     end
 end
