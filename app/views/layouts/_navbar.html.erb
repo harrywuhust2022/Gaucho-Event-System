@@ -2,16 +2,18 @@
   <div class="container">
     <ul class="navbar-list">
       <li><%= link_to 'Home', root_path %></li>
+      <li><%= link_to 'Find friends', users_path %></li>
        
       
       <% if !current_user.nil? %>
-        <li>Welcome, <%= current_user.username %></li>
+        <li>Welcome, <%= link_to current_user.username, current_user %></li>
         <li><%= link_to 'Logout', logout_path, data:{
             turbo_method: :delete,
             turbo_confirm: "Are you sure?"
         } %></li>
       <% else %>
         <li><%= link_to 'Login', '/login' %></li>
+        <li><%= link_to 'Register', register_path %></li>
       <% end %>
     </ul>
   </div>

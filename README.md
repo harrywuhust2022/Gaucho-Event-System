@@ -2,7 +2,7 @@
 
 Creator: Kedai Zuo
 
-Date: 11/14/2023
+Date: 12/3/2023
 
 * Models
 
@@ -16,12 +16,18 @@ Model relationship details can be seen in models.
 
 * Database
 
-Sqlite
+PostgreSQL
 
 
 * Attention
 
-Before running, run rails db:migrate to generate tables.
+Before running:
+
+Configure postgreSQL to make the database used correspond to config/database.yml
+
+Run rails db:create and rails db:migrate to generate database and tables.
+
+
 
 * Resources
 
@@ -29,14 +35,16 @@ Almost all essential CRUD operations of every model are realized.
 
 Route details can be seen in routes.rb.
 
+Authentication and authorization are realized both in backend and frontend to make it safe.
+
 
 * Main Services 
 
-1. Create users
+1. Login, logout and register
 
-2. User can create posts
+2. User can create posts, view friends and all events published.
 
-3. User can create comments on a specific event(because we don't have authentication, the commenter always is admin, who will be created automatically when a first comment is created)
+3. User can create comments on a specific event
 
 4. User can invite another user for a specific event
 

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy', as: 'logout'
+  get '/register', to: 'users#new', as: 'register'
 
   resources :users do
     resources :invites do
