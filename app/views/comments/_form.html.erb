@@ -1,0 +1,20 @@
+<%= form_with model: [ @user, @event, @comment ], class: 'needs-validation', novalidate: true do |form| %>
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col-md-6">
+        <div class="mb-3">
+          <%= form.text_area :content, class: 'form-control', rows: 4 %>
+          <% @comment.errors.full_messages_for(:content).each do |message| %>
+            <div class="invalid-feedback d-block">
+              <%= message %>
+            </div>
+          <% end %>
+        </div>
+        
+        <div class="text-center">
+          <%= form.submit class: 'btn btn-primary' %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,51 @@
+<h3 style="color: #333333; margin-top: 20px; margin-bottom: 30px;">
+  Received Invitations List
+</h3>
+<h4 style="color: #333333; margin-top: 20px;">
+  <%= Invite.pending_invites_for_guest(@user) %> pending received invites
+</h4>
+
+<div class="events-container" style="border: 1px solid #ccc; padding: 15px;">
+  <% @invites.each do |invite| %>
+    <div class="event" style="margin-bottom: 20px; padding: 10px; border: 1px solid #eee; border-radius: 8px;">
+      <div style="margin-bottom: 10px;">
+        <strong>Event:</strong> <%= link_to invite.event.title, user_event_path(invite.host, invite.event), style: "color: #808080; text-decoration: none; font-weight: bold;" %>
+      </div>
+      <div style="margin-bottom: 10px;">
+        <strong>Host:</strong> <%= link_to invite.host.username, invite.host, style: "color: #808080; text-decoration: none; font-weight: bold;" %>
+      </div>
+      <div style="margin-bottom: 10px;">
+        <strong>Guest:</strong> <%= link_to invite.guest.username, invite.guest, style: "color: #808080; text-decoration: none; font-weight: bold;" %>
+      </div>
+      <div style="margin-bottom: 10px;">
+        <strong>Status:</strong> 
+        <% if invite.status == 1 %>
+          Accepted
+        <% elsif invite.status == 0 %>
+          Pending
+        <% else %>
+          Rejected
+        <% end %>
+      </div>
+      <% if invite.status == 0 %>
+        <%= render "responses/form", invite: invite %>
+      <% else %>
+        <% if !invite.response.message.empty? %>
+          <div style="margin-bottom: 10px;">
+            <strong>Response:</strong> <%= invite.response.message %>
+          </div>
+        <% end %>
+        <div>
+          <%= link_to "Destroy Received Invite", destroy_received_invite_user_invite_path(@user, invite), data: {
+              turbo_method: :delete,
+              turbo_confirm: "Are you sure?"
+          }, class: "btn btn-danger", style: "text-decoration: none; color: white; padding: 5px 10px; border-radius: 5px; font-size: 14px;" %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<div style="margin-top: 20px; text-align: center;">
+  <%= link_to "Back to User Profile", @user, class: "btn btn-secondary", style: "text-decoration: none; color: white; padding: 5px 10px; border-radius: 5px; font-size: 14px;" %>
+</div>

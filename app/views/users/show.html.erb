@@ -1,0 +1,31 @@
+
+<div class="container mt-4">
+  <div class="border p-3 mb-5">
+    <div class="mb-3">
+      <h1 class="display-4 fw-bold"><%= @user.username %></h1>
+      <div class="d-flex justify-content-start">
+        <p class="lead me-4">Email: <%= @user.email %></p>
+      </div>
+    </div>
+
+    <% if current_user == @user %>
+      <div class="container mb-3">
+        <%= link_to "Edit", edit_user_path(@user), class: "btn btn-primary" %>
+        <%= link_to "Back", users_path, class: "btn btn-secondary" %>
+        <%= link_to "Destroy", user_path(@user), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="container mb-5">
+    <%= link_to "Participated Events", participated_events_user_path(@user), class: "btn btn-info mt-2" %>
+    <%= link_to "New Event", new_user_event_path(@user), class: "btn btn-info mt-2" %>
+    <%= link_to "Sent Invitations", user_invites_path(@user), class: "btn btn-warning mt-2" %>
+    <%= link_to "Received Invitations", received_invites_user_path(@user), class: "btn btn-warning mt-2" %>
+  </div>
+
+  <div class="container">
+    <h2 class="fw-bold mb-3">Events Created</h2>
+    <%= render @user.created_events%>
+  </div>
+</div>

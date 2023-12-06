@@ -1,0 +1,30 @@
+<div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+  <%= form_with url: user_invites_path(@user, @invite), method: :post, html: { style: 'width: 400px; border: 1px solid #d3d3d3; padding: 20px; border-radius: 10px;' } do |form| %>
+
+    <h3 style="text-align: center; width: 100%; margin-top: 0;">Send Invitation</h3>
+
+    <div style="margin-bottom: 15px;">
+      <%= form.label :username %><br>
+      <%= text_field_tag :username, nil, class: 'form-control' %>
+    </div>
+
+    <%= hidden_field_tag :selected_event, @selected_event.id %>
+
+    <% if @user_not_found %>
+      <div style="color: red; margin-bottom: 15px;">
+        User not found
+      </div>
+    <% end %>
+
+    <% if @user_exists %>
+      <div style="color: red; margin-bottom: 15px;">
+        User exists
+      </div>
+    <% end %>
+
+    <div style="display: flex; justify-content: space-between; margin-top: 15px;">
+      <%= form.submit "Submit", class: 'btn btn-primary' %>
+      <%=link_to "back", user_event_path(@user, @selected_event), class: 'btn btn-secondary'%>
+    </div>
+  <% end %>
+</div>

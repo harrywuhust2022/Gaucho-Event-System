@@ -1,0 +1,28 @@
+<h3 style="color: #333333; margin-top: 20px; margin-bottom: 30px;">
+  Participated Invitations List
+</h3>
+<h4 style="color: #333333; margin-top: 20px;">
+  You have <%= @events.size %> events participated.
+</h4>
+<div class="events-container" style="border: 1px solid #ccc; padding: 15px;">
+  <% @events.each do |event| %>
+    <div class="event" style="margin-bottom: 20px; padding: 10px; border: 1px solid #eee; border-radius: 8px;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <p style="margin: 0; font-size: 32px; font-weight: bold; color: #333;">
+            <%= event.title %>
+          </p>
+          <p style="margin: 0; font-size: 16px; color: #666;">
+            Creator : <%= event.creator.username %>
+          </p>
+          <p style="margin: 0; font-size: 24px; color: #333;">
+            <%= event.content %>
+          </p>
+        </div>
+        <div>
+          <%= link_to "View", user_event_path(@user, event), class: "btn btn-primary", style: "text-decoration: none; color: white; background-color: #007bff; border-color: #007bff; padding: 5px 10px; border-radius: 5px; font-size: 14px;" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

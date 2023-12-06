@@ -1,0 +1,38 @@
+<div class="container mt-4">
+  <!-- Event Title, Content and Back Button -->
+  <div class="card mb-4 shadow-sm">
+    <div class="card-body" >
+      <h2 class="card-title strong" style="color: #169297;">Topic : <%= @event.title %></h2>
+      <p class="text-secondary" style="font-size: 0.9rem color: #169297;">
+    
+          Creator: <span class="text-secondary"><%= @event.creator.username %></span>
+      </p>
+      <p class="card-text" style="font-size: 1.1rem;"><%= @event.content %></p>
+
+      <% if current_user == @user %>
+        <%= link_to "Invite", new_user_invite_path(@user, selected_event: @event), class: "btn btn-primary" %>
+        <%= link_to "Destroy", user_event_path(@user, @event), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger me-2" %>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- Comments Section -->
+  <h5 class="mb-3" style="color: #169297;"> <%= @event.comments.size %> Comments Listed Below: </h5>
+  <div class="card mb-4 shadow-sm">
+    <div class="card-body">
+      <% @event.comments.each do |comment| %>
+        <div class="border-bottom mb-3 pb-3">
+          <%= render comment %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- New Comment Form -->
+  <h5 class="mb-3" style="color: #169297;">Create a new comment</h5>
+  <div class="card mb-4 shadow-sm">
+    <div class="card-body">
+      <%= render "comments/form" %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+<div style="display: flex; justify-content: center; align-items: center; height: 100vh;"> 
+<%= form_with model: @user, html: { style: 'width: 400px; border: 1px solid #d3d3d3; padding: 20px; border-radius: 10px;' } do |form| %>
+<h3 style="text-align: center; width: 100%; margin-top: 0;">Create Account</h3>
+    <div style="margin-bottom: 15px;">
+      <%= form.label :username %><br>
+      <%= form.text_field :username, class: 'form-control' %>
+      <% @user.errors.full_messages_for(:username).each do |message| %>
+          <div style="color: red;">
+              <%= message %>
+          </div>
+      <% end %>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <%= form.label :email %><br>
+      <%= form.text_field :email, class: 'form-control' %>
+      <% @user.errors.full_messages_for(:email).each do |message| %>
+          <div style="color: red;">
+              <%= message %>
+          </div>
+      <% end %>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <%= form.label :password %><br>
+      <%= form.password_field :password, class: 'form-control' %>
+      <% @user.errors.full_messages_for(:password).each do |message| %>
+          <div style="color: red;">
+              <%= message %>
+          </div>
+      <% end %>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <%= form.label :password_confirmation %><br>
+      <%= form.password_field :password_confirmation, class: 'form-control' %>
+      <% @user.errors.full_messages_for(:password_confirmation).each do |message| %>
+        <div style="color: red;">
+          <%= message %>
+        </div>
+      <% end %>
+    </div>
+
+    <div style="display: flex; justify-content: space-between;">
+      <%= form.submit 'Submit', class: 'btn btn-primary' %>
+      <%= link_to 'Back', @user, class: 'btn btn-secondary' %>
+    </div>
+  <% end %>
+</div>
