@@ -15,7 +15,8 @@
 
 
 <p>All events created</p>
-<%= render @user.created_events%>
+<%= render @created_events%>
+<%= paginate @created_events %>
 <%=link_to "participated events", participated_events_user_path(@user)%><br>
 
 

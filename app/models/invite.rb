@@ -1,4 +1,5 @@
 class Invite < ApplicationRecord
+  paginates_per 2
   belongs_to :event
   belongs_to :host, class_name: 'User'
   belongs_to :guest, class_name: 'User'

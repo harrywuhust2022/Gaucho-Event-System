@@ -50,6 +50,12 @@ Authentication and authorization are realized both in backend and frontend to ma
 
 5. User can response to invites and be added to that event
 
+* Optimization
+
+1. Pagination
+
+Add pagination to user list, event list, created events by a user, participated events of a user, reiceived invitations and sent invitations.
+
 
 
 

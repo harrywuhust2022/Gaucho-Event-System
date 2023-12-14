@@ -4,7 +4,8 @@ class InvitesController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @invites = @user.sent_invites
+    # @invites = @user.sent_invites
+    @invites = @user.sent_invites.page(params[:page])
   end
   def sent_invites
   end
@@ -13,7 +14,8 @@ class InvitesController < ApplicationController
     unless current_user == @user
       redirect_to root_path, alert: "You are not authorized to perform this action."
     end
-    @invites = @user.received_invites
+    # @invites = @user.received_invites
+    @invites = @user.received_invites.page(params[:page])
     @response = Response.new
   end
   def new

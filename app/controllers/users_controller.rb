@@ -2,10 +2,12 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :check_user, only: [:edit, :update, :destroy]
   def index
-    @users = User.all
+    # @users = User.all
+    @users = User.page(params[:page])
   end
   def show
     # @user = User.find(params[:id])
+    @created_events = @user.created_events.page(params[:page]).per(2)
   end
   def new
     @user = User.new
