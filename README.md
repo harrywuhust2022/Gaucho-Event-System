@@ -56,6 +56,9 @@ Authentication and authorization are realized both in backend and frontend to ma
 
 Add pagination to user list, event list, created events by a user, participated events of a user, reiceived invitations and sent invitations.
 
+2. Indexing
+
+Add indexing to invite users by username, and session authentication by user email.
 
 
 
