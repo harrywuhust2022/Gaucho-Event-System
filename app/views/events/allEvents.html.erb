@@ -1,7 +1,9 @@
 <p> Here are all events</p>
 <% @events.each do |event| %>
     <li>
-        <%= link_to event.title, user_event_path(event.creator, event) %><br>
+        Title: <%= link_to event.title, user_event_path(event.creator, event) %><br>
+        Creator: <%= link_to event.creator.username, event.creator%><br>
+        Content: <%= link_to event.content%><br>
         
     </li>
 <%end%>

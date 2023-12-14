@@ -2,7 +2,9 @@ class EventsController < ApplicationController
   before_action :check_user, only: [:new, :create, :destroy]
   def allEvents
     # @events = Event.all
-    @events = Event.page(params[:page])
+    # @users = User.all
+
+    @events = Event.page(params[:page]).includes(:creator)
   end
   def new
     @user = User.find(params[:user_id])
@@ -26,6 +28,7 @@ class EventsController < ApplicationController
   def show
     @user = User.find(params[:user_id])
     @event = @user.created_events.find(params[:id])
+    @comments = @event.comments.includes(:user)
     @comment = Comment.new
 
 

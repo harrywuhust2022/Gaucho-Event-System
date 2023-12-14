@@ -2,7 +2,7 @@
 
 Creator: Kedai Zuo
 
-Date: 12/3/2023
+Date: 12/13/2023
 
 * Models
 
@@ -59,6 +59,10 @@ Add pagination to user list, event list, created events by a user, participated 
 2. Indexing
 
 Add indexing to invite users by username, and session authentication by user email.
+
+3. N+1 queries
+
+Add this to event list and comment list under an event.
 
 
 
