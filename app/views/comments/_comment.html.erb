@@ -1,10 +1,10 @@
-<p>
-  <strong>Commenter:</strong>
-  
-  <%=link_to comment.user.username, comment.user%>
-</p>
+<div class="comment mb-3">
+  <p>
+    <strong class="text-secondary"><%= link_to comment.user.username, comment.user, class: "text-dark", style: "text-decoration: none;" %> : </strong>
+    
+  </p>
 
-<p>
-  Content:
-  <%= comment.content %>
-</p>
+  <p class="mt-1">
+    <span class="text-muted"><%= comment.content %></span>
+  </p>
+</div>

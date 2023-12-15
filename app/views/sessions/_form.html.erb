@@ -1,26 +1,29 @@
-<%= form_with model: @user, url: '/login', method: :post do |form| %>
-  
+<div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+  <div class="border p-4" style="border-color: grey; width: 30%;">
+  <h3 class="text-center mb-4">Login</h3>
+    <%= form_with model: User.new, url: '/login', method: :post, class: "form-group" do |form| %>
 
-  <div>
-    <%= form.label :email %><br>
-    <%= form.text_field :email %>
-    
-  </div>
+      <div class="mb-3">
+        <%= form.label :email, class: "form-label" %>
+        <%= form.text_field :email, class: "form-control" %>
+      </div>
 
-  <div>
-    <%= form.label :password %><br>
-    <%= form.password_field :password %>
-    
-  </div>
-  <% if flash[:error].present? %>
-    <div class="alert alert-danger">
-        <%= flash[:error] %>
-    </div>
-  <% end %>
-  
+      <div class="mb-3">
+        <%= form.label :password, class: "form-label" %>
+        <%= form.password_field :password, class: "form-control" %>
+      </div>
 
-  <div>
-    <%= form.submit "Log in" %>
+      <% if flash[:error].present? %>
+        <div class="alert alert-danger">
+          <%= flash[:error] %>
+        </div>
+      <% end %>
+
+      <div class="d-flex justify-content-between">
+        <%= link_to "Back", users_path, class: "btn btn-secondary" %>
+        <%= form.submit "Log in", class: "btn btn-primary" %>
+      </div>
+
+    <% end %>
   </div>
-  
-<% end %>
+</div>

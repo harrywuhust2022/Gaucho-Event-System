@@ -1,10 +1,27 @@
-<p> Here are all events</p>
-<% @events.each do |event| %>
-    <li>
-        Title: <%= link_to event.title, user_event_path(event.creator, event) %><br>
-        Creator: <%= link_to event.creator.username, event.creator%><br>
-        Content: <%= link_to event.content%><br>
-        
-    </li>
-<%end%>
-<%= paginate @events %>
+
+
+<div class="container mt-5 mb-5">
+<h1 class="fw-bold mb-4 text-center" style="font-size: 2.25rem; color: #f0e630; font-family: 'Georgia', serif;">
+Welcome to the Gaucho Event System!
+</h1>
+
+  <% @events.each do |event| %>
+    <div class="card mb-4">
+      <div class="card-body">
+      <h3 class="card-title fw-bold"; style: "color: #181e5c;">
+  Event: <%= link_to event.title, user_event_path(event.creator, event), class: "text-decoration-none", style: "color: #181e5c;" %>
+</h3>
+
+        <p style="color: #808080; font-size: 0.8rem;">
+          Creator : <%= event.creator.username %>
+        </p>
+        <p class="card-text" style="color: #C0C0C0;"><%= event.content %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="pagination-container">
+  <%= paginate @events %>
+</div>
+

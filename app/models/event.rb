@@ -1,5 +1,5 @@
 class Event < ApplicationRecord
-  paginates_per 2
+  paginates_per 10
 
   belongs_to :creator, class_name: 'User', foreign_key: 'user_id'
   has_many :comments, dependent: :destroy

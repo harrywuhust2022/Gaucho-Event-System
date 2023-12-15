@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  paginates_per 2
+  paginates_per 5
   has_many :created_events, class_name: 'Event', dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :sent_invites, class_name: 'Invite', foreign_key: 'host_id', dependent: :destroy

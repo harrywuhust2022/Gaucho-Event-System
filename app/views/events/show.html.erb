@@ -1,26 +1,46 @@
-<h1><%= @event.title%></h1>
-<h2><%= @event.content%></h2>
-<% if current_user == @user%>
-    <%= link_to "destroy", user_event_path(@user, @event), data:{
+
+
+<div class="container mt-4">
+  <!-- Event Title, Content and Back Button -->
+  <div class="card mb-4 shadow-sm">
+    <div class="card-body" >
+      <h1 class="card-title strong" style="color: #181e5c; font-family: 'Georgia'">Event : <%= @event.title %></h1>
+      <p class="text-secondary" style="font-size: 0.9rem; color: #169297;">
+          Creator: <span class="text-secondary"><%= @event.creator.username %></span>
+      </p>
+      <p class="card-text" style="font-size: 1.1rem;"><%= @event.content %></p>
+
+      <% if current_user == @user %>
+        <%= link_to "Invite", new_user_invite_path(@user, selected_event: @event), class: "btn btn-primary" %>
+        <%= link_to "Destory", user_event_path(@user, @event), data:{
         turbo_method: :delete,
         turbo_confirm: "Are you sure?"
-    }%> <br>
-    <%=link_to "invite", new_user_invite_path(@user, selected_event:@event)%><br>
-<%end%>
+        }, class: "btn btn-danger me-2"%>
+    
+      <% end %>
+    </div>
+  </div>
 
+  <!-- Comments Section -->
+  <% if @event.comments.size != 0%>
+  <h5 class="mb-3" style="color: #181e5c;"> <%= @event.comments.size %> Comments Listed Below: </h5>
+  <div class="card mb-4 shadow-sm">
+    <div class="card-body">
+      <% @event.comments.each do |comment| %>
+        <div class="border-bottom mb-3 pb-3">
+          <%= render comment %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
 
-<%= link_to "back", @user%>
+  <!-- New Comment Form -->
+  <h5 class="mb-3" style="color: #181e5c;">Create a new comment</h5>
+  <div class="card mb-4 shadow-sm">
+    <div class="card-body">
+      <%= render "comments/form" %>
+    </div>
+  </div>
+</div>
 
-<p>All comments:<%=@event.comments.size%></p>
-<%=render @comments%>
-<p>create a comment</p>
-<%=render "comments/form"%>
-
-<p>You have <%=@event.participants.size%> members</p>
-<ul>
-    <%@event.participants.each do |participant|%>
-        <li>
-            <%= link_to participant.username, participant%>
-        </li>
-    <%end%>
-</ul>

@@ -1,23 +1,41 @@
-<h1>Hi <%= @user.username %></h1>
-<h2>Email: <%= @user.email %></h2>
-<% if current_user == @user%>
-    <%= link_to "edit", edit_user_path(@user)%><br>
-    <%= link_to "destroy", user_path(@user), data:{
+
+<div class="container mt-4">
+  <div class="border p-3 mb-5">
+    <div class="mb-3">
+      <h1 class="display-4 fw-bold"><%= @user.username %></h1>
+      <div class="d-flex justify-content-start">
+        <p class="lead me-4">Email: <%= @user.email %></p>
+      </div>
+    </div>
+
+    <% if current_user == @user %>
+      <div class="container mb-3">
+        <%= link_to "Edit", edit_user_path(@user),  class: "btn", style: "background-color: #181e5c; color: #f0e630;" %>
+        <%= link_to "Back", users_path, class: "btn", style: "background-color: #181e5c; color: #f0e630;" %>
+        <%= link_to "Destroy", user_path(@user), data:{
         turbo_method: :delete,
         turbo_confirm: "Are you sure?"
-    }%><br>
-    <%= link_to "create a new event", new_user_event_path(@user)%><br>
-    <%=link_to "sent invites", user_invites_path(@user)%><br>
-    <%=link_to "received invites", received_invites_user_path(@user)%><br>
-<%end%>
+        }, class: "btn", style: "background-color: #181e5c; color: #f0e630;"%>
+    
+      </div>
+    <% end %>
+  </div>
 
-<%= link_to "back", users_path%><br>
+  <div class="container mb-5">
+    <%= link_to "Participated Events", participated_events_user_path(@user), class: "btn mt-2", style: "background-color: #181e5c; color: #f0e630;" %>
+    <%= link_to "New Event", new_user_event_path(@user), class: "btn mt-2", style: "background-color: #181e5c; color: #f0e630;" %>
+    <%= link_to "Sent Invitations", user_invites_path(@user), class: "btn  mt-2", style: "background-color: #181e5c; color: #f0e630;" %>
+    <%= link_to "Received Invitations", received_invites_user_path(@user), class: "btn mt-2", style: "background-color: #181e5c; color: #f0e630;" %>
+  </div>
 
-
-<p>All events created</p>
-<%= render @created_events%>
-<%= paginate @created_events %>
-<%=link_to "participated events", participated_events_user_path(@user)%><br>
+  <div class="container">
+    <h2 class="fw-bold mb-3">Events Created</h2>
+    <%= render @created_events%>
+    <div class="pagination-container">
+      <%= paginate @created_events %>
+    </div>
+  </div>
+</div>
 
 
 
