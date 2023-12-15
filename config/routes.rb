@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy', as: 'logout'
   get '/register', to: 'users#new', as: 'register'
-  post '/test', to: 'users#test'
+  post '/searchUser', to: 'users#searchUser'
   resources :users do
     resources :invites do
       resources :responses

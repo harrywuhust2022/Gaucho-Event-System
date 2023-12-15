@@ -10,9 +10,16 @@
     <%= javascript_importmap_tags %>
     
   </head>
-
+  
   <body>
     <%= render 'layouts/navbar' %> 
+    <% if flash[:alert] %>
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <%= flash[:alert] %>
+        
+      </div>
+    <% end %>
+
     <div class="container">
       <%= yield %>
     </div>

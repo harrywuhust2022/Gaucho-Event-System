@@ -25,7 +25,8 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
       <li class="nav-item d-flex align-items-center">
-        <form class="d-flex position-relative" action="/users" method="post">
+        <form class="d-flex position-relative" action="/searchUser" method="post">
+          <input type="hidden" name="lastUrl" value="<%= request.original_url %>">
           <input class="form-control" type="search" placeholder="Search" name="search_term" aria-label="Search" id="navbarSearchInput">
           <button class="btn position-absolute top-0 end-0 h-100" type="submit" id="navbarSearchButton">
             <i class="bi bi-search"></i>

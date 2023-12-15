@@ -2,7 +2,7 @@
 
 Creator: Kedai Zuo
 
-Date: 12/13/2023
+Date: 12/14/2023
 
 * Models
 
@@ -42,7 +42,7 @@ Authentication and authorization are realized both in backend and frontend to ma
 
 1. Login, logout and register
 
-2. User can create posts, view friends and all events published.
+2. User can create posts, search other users and view all events published.
 
 3. User can create comments on a specific event
 
