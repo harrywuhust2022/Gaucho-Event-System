@@ -23,21 +23,45 @@
 # production:
 #   <<: *default
 #   database: storage/production.sqlite3
-default: &default
-  adapter: postgresql
-  encoding: unicode
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: postgres
-  password: postgres
+# default: &default
+#   adapter: postgresql
+#   encoding: unicode
+#   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+#   username: postgres
+#   password: postgres
   
-  host: localhost
+#   host: localhost
 
-test:
-  <<: *default
-  database: evens_test
+# test:
+#   <<: *default
+#   database: evens_test
+# development:
+#   <<: *default
+#   database: evens_development
+# production:
+#   <<: *default
+#   database: <%= ENV['RDS_DB_NAME'] %>
+#   host: <%= ENV['RDS_HOSTNAME'] %>
+#   password: <%= ENV['RDS_PASSWORD'] %>
+#   port: <%= ENV['RDS_PORT'] %>
+#   username: <%= ENV['RDS_USERNAME'] %>
+
+default: &default
+  adapter: sqlite3
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+
 development:
   <<: *default
-  database: evens_development
+  database: storage/development.sqlite3
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  <<: *default
+  database: storage/test.sqlite3
+
 production:
   <<: *default
   database: <%= ENV['RDS_DB_NAME'] %>
