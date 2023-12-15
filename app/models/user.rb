@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :received_responses, class_name: 'Response', foreign_key: 'receiver_id', dependent: :destroy
 
 
-  has_many :user_events
+  has_many :user_events, dependent: :destroy
   has_many :participating_events, through: :user_events, source: :event
 
   has_secure_password

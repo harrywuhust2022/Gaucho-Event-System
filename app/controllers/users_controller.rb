@@ -36,9 +36,13 @@ class UsersController < ApplicationController
 
   def destroy
     # @user = User.find(params[:id])
+    if @current_user == @user
+
+      reset_session
+    end
     @user.destroy
 
-    redirect_to users_path, status: :see_other
+    redirect_to root_path, status: :see_other
   end
   def searchUser
     username = params[:search_term]

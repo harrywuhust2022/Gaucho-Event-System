@@ -6,7 +6,7 @@ class Event < ApplicationRecord
   has_many :invites, dependent: :destroy
 
 
-  has_many :user_events
+  has_many :user_events, dependent: :destroy
   has_many :participants, through: :user_events, source: :user
 
 
