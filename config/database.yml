@@ -29,7 +29,6 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: postgres
   password: postgres
-  
   host: localhost
 
 test:
@@ -40,4 +39,8 @@ development:
   database: evens_development
 production:
   <<: *default
-  database: evens_production
+  database: <%= ENV['RDS_DB_NAME'] %>
+  host: <%= ENV['RDS_HOSTNAME'] %>
+  password: <%= ENV['RDS_PASSWORD'] %>
+  port: <%= ENV['RDS_PORT'] %>
+  username: <%= ENV['RDS_USERNAME'] %>
