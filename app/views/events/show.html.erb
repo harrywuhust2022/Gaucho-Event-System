@@ -8,6 +8,15 @@
       <p class="text-secondary" style="font-size: 0.9rem; color: #169297;">
           Creator: <span class="text-secondary"><%= @event.creator.username %></span>
       </p>
+
+      <p class="text-secondary" style="font-size: 0.9rem; color: #169297;">
+  Event has <%=@event.participants.size%> members: 
+  <% @event.participants.each_with_index do |participant, index| %>
+    <%= link_to participant.username, participant, class: "text-decoration-none", style: "font-size: 0.9rem; color: #169297;"%>
+    <% if index < @event.participants.size - 1 %>, <% end %>
+  <% end %>
+</p>
+
       <p class="card-text" style="font-size: 1.1rem;"><%= @event.content %></p>
 
       <% if current_user == @user %>
