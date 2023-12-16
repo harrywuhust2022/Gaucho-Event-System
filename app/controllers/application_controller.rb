@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
   helper_method :current_user
+  protect_from_forgery with: :null_session
 
   def record_not_found
     render file: "#{Rails.root}/public/404.html", layout:false, status: :not_found
