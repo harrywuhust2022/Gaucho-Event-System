@@ -24,6 +24,26 @@ Rails.application.routes.draw do
   resources :invites
   resources :responses
 
+  resources :users do
+    resources :invites do
+      resources :responses
+      member do
+        delete :destroy_received_invite
+      end
+    end
+    member do
+
+      get 'received_invites', to: 'invites#received_invites'
+    end
+    member do
+      get 'participated_events', to: 'events#participated_events'
+    end
+    resources :events do
+      resources :comments
+
+    end
+  end
+
   get '*path', to: 'application#record_not_found'
 
 end
