@@ -1,8 +1,9 @@
 # README
 
-Creator: Kedai Zuo
+Team Name: KAI KAI
+Team Members: Kai Han, Rutvik Jha, Sahil Naik, Qiming Wu and Kedai Zuo.
 
-Date: 12/14/2023
+Date: 12/15/2023
 
 * Models
 
