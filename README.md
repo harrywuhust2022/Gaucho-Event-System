@@ -1,7 +1,7 @@
-# README
+# Gaucho Event System
 
-Team Name: KAI KAI
-Team Members: Kai Han, Rutvik Jha, Sahil Naik, Qiming Wu and Kedai Zuo.
+* Team Name: KAI KAI
+* Team Members: Kai Han, Rutvik Jha, Sahil Naik, Qiming Wu and Kedai Zuo.
 
 Date: 12/15/2023
 
