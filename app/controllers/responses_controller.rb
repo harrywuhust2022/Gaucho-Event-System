@@ -22,7 +22,7 @@ class ResponsesController < ApplicationController
     @response.event = @invite.event
     #@response.save
     puts @response
-    if result
+    if result == 'yes'
       @invite.status = 1
     else
       @invite.status = -1
@@ -30,9 +30,12 @@ class ResponsesController < ApplicationController
 
     if @response.save
       @invite.save
-      @event = @invite.event
-      user_event = UserEvent.new(user: @user, event: @event)
-      user_event.save
+      if result == 'yes'
+        @event = @invite.event
+        user_event = UserEvent.new(user: @user, event: @event)
+        user_event.save
+      end
+
       redirect_to received_invites_user_path(@user)
     else
 
