@@ -17,25 +17,13 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy', as: 'logout'
   get '/register', to: 'users#new', as: 'register'
   post '/searchUser', to: 'users#searchUser'
-  resources :users do
-    resources :invites do
-      resources :responses
-      member do
-        delete :destroy_received_invite
-      end
-    end
-    member do
+  
+  resources :users
+  resources :comments
+  resources :events
+  resources :invites
+  resources :responses
 
-      get 'received_invites', to: 'invites#received_invites'
-    end
-    member do
-      get 'participated_events', to: 'events#participated_events'
-    end
-    resources :events do
-      resources :comments
-
-    end
-  end
   get '*path', to: 'application#record_not_found'
 
 end
