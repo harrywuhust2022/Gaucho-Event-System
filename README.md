@@ -1,5 +1,7 @@
 # Gaucho Event System
 
+**Project Report** is available at [google doc](https://docs.google.com/document/d/1dhbWmYC0crUwHDih5kopxzmPN9UBxOmvJzMrVNVnf3g/edit?usp=sharing).
+
 * Team Name: KAI KAI
 * Team Members: Kai Han, Rutvik Jha, Sahil Naik, Qiming Wu and Kedai Zuo.
 
